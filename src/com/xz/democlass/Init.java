@@ -1,5 +1,11 @@
 package com.xz.democlass;
 
+/**
+ * 运行继承代码
+ *
+ * @author zs
+ * @date 2019/1/16
+ */
 public class Init {
     public static void main(String[] strings) {
         Dog dog = new Dog();
