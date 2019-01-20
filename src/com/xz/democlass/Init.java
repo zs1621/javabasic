@@ -30,5 +30,21 @@ public class Init {
 
         a1.eat();
         a2.eat();
+
+        // 引用类型转换
+        Dog dog1 = new Dog();
+
+        Animal animal = dog1;
+
+        System.out.println(animal instanceof Dog);
+
+        // 接口使用
+
+        IPlayGame p1 = new SmartTelephone();
+        p1.playGame();
+
+        IPlayGame p2 = () -> System.out.println("匿名内部类方法");
+
+        p2.playGame();
     }
 }
