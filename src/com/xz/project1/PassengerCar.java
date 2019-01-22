@@ -14,8 +14,14 @@ public class PassengerCar extends Car{
     }
 
     @Override
-    public void carDetail() {
-        System.out.println(this.name + "  " + this.price + "元/天" +
-                "  " +  "载客量: " + this.passengerCapacity);
+    public void carDetail(int index) {
+        System.out.printf("%d %s  %s元/天  载客量: %d%n", index,
+                this.name, this.price, this.passengerCapacity);
     }
+
+    @Override
+    public boolean isPassenger() {
+        return true;
+    }
+
 }

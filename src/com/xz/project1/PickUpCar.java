@@ -16,10 +16,19 @@ public class PickUpCar extends Car{
     }
 
     @Override
-    public void carDetail() {
-        System.out.println(this.name + "  " + this.price + "元/天" +
-                "  " +
-                "载客量: " + this.passengerCapacity +
-                " 载货量: " + this.cargoCapacity );
+    public void carDetail(int index) {
+        System.out.printf("%d  %s  %s元/天  载客量: %d 载货量: %s%n",
+                index, this.name, this.price,
+                this.passengerCapacity, this.cargoCapacity);
+    }
+
+    @Override
+    public boolean isCargo() {
+        return true;
+    }
+
+    @Override
+    public boolean isPassenger() {
+        return true;
     }
 }

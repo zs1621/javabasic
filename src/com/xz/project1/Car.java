@@ -21,5 +21,19 @@ public class Car {
     double price;
     String name;
 
-    public void carDetail() {}
+    public void carDetail(int index) {}
+
+    /**
+    是否可载客
+     */
+    public boolean isPassenger() {
+        return false;
+    }
+
+    /**
+    是否可载货
+     */
+    public boolean isCargo() {
+        return false;
+    }
 }

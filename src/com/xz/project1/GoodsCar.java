@@ -15,8 +15,13 @@ public class GoodsCar extends Car{
     }
 
     @Override
-    public void carDetail() {
-        System.out.println(this.name + "  " + this.price + "元/天" +
-                "  " +  "载货量: " + this.cargoCapacity);
+    public void carDetail(int index ) {
+        System.out.printf("%d  %s  %s元/天  载货量: %s%n",
+                index, this.name, this.price, this.cargoCapacity);
+    }
+
+    @Override
+    public boolean isCargo() {
+        return true;
     }
 }
