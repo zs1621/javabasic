@@ -3,6 +3,7 @@ package com.xz.project1;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 /**
  * 答答租车系统
@@ -163,15 +164,12 @@ public class DaDa {
 
         System.out.println("您的订单信息:");
         System.out.println("***可载人的车有:");
-        for (int i = 0; i < passengerCarRent.size(); i++) {
-            Car car = (Car) passengerCarRent.get(i);
-            System.out.printf("%s  ", car.name);
-        }
+        IntStream.range(0, passengerCarRent.size()).mapToObj(i -> (Car) passengerCarRent.get(i)).forEach(car -> System.out.printf("%s  ", car.name));
         System.out.printf("共载人 %d人%n", calPassengerCapacity(passengerCarRent));
 
         System.out.println("***载货的车有:");
-        for (int i = 0; i < goodsCarRent.size(); i++) {
-            Car car = (Car) goodsCarRent.get(i);
+        for (Object aGoodsCarRent : goodsCarRent) {
+            Car car = (Car) aGoodsCarRent;
             System.out.printf("%s  ", car.name);
         }
         System.out.printf("共载货 %.2f吨%n", calCargoCapacity(goodsCarRent));
