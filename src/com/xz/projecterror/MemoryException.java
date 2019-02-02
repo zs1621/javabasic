@@ -1,4 +1,4 @@
-package com.xz.projectError;
+package com.xz.projecterror;
 
 
 /**
