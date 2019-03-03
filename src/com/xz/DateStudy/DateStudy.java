@@ -11,13 +11,15 @@ import java.util.Date;
  * @date 2019/2/21
  */
 public class DateStudy {
+
     public static void main(String[] args) {
         Date d = new Date();
         System.out.println(d);
-        System.out.println(timeFormat("yyyy-MM-dd HH:mm:ss", d));
+        DateStudy s = new DateStudy();
+        System.out.println(s.timeFormat("yyyy-MM-dd HH:mm:ss", d));
         try {
-            System.out.println(timeParse("2018年11月11日 12:23:59"));
-            System.out.println(timeParse("2018年dfdf11月11日 12:23:59"));
+            System.out.println(s.timeParse("2018年11月11日 12:23:59"));
+            System.out.println(s.timeParse("2018年dfdf11月11日 12:23:59"));
         } catch (ParseException e) {
             System.out.println("时间格式不是 \"2018年11月11日 12:23:59\"");
         }
@@ -32,7 +34,7 @@ public class DateStudy {
      * @return 被格式化的字符串
      */
 
-    private static String timeFormat(String format, Date d) {
+    public  String timeFormat(String format, Date d) {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         return sdf.format(d);
     }
@@ -43,7 +45,7 @@ public class DateStudy {
      * @return 时间对象
      * @throws ParseException  时间字符不符的提示
      */
-    private static Date timeParse(String timeString) throws ParseException {
+    public  Date timeParse(String timeString) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
         return sdf.parse(timeString);
     }
