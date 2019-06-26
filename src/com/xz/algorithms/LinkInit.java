@@ -13,11 +13,7 @@ class LinkInit {
         LinkNode next;
         int size = 0;
         public boolean hasNext() {
-            if (next == null) {
-                return false;
-            } else {
-                return true;
-            }
+            return next != null;
         }
 
         public void push(int value) {

@@ -49,6 +49,26 @@ public class StackLink<Item> implements Iterable<Item> {
 
     @Override
     public Iterator<Item> iterator() {
-        return null;
+        return new ReverseStackIterator();
+    }
+
+    private class ReverseStackIterator implements Iterator<Item> {
+        // 支持
+        private Node current = first;
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Item next() {
+            Item temp = current.item;
+            current = current.next;
+            return temp;
+        }
+
+        @Override
+        public void remove() {}
+
     }
 }
