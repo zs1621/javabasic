@@ -24,4 +24,27 @@ class SolutionTest {
         assertEquals(l3.next.val, 0);
 
     }
+
+    @Test
+    void lengthLonestStr() {
+        String x = "dvdf";
+        int y = new Solution().lengthOfLongestSubstring(x);
+        assertEquals(3, y);
+
+        x = "dvddf";
+        y = new Solution().lengthOfLongestSubstring(x);
+        assertEquals(2, y);
+
+        x = "aaaa";
+        y = new Solution().lengthOfLongestSubstring(x);
+        assertEquals(1, y);
+
+        x = "abcabc";
+        y = new Solution().lengthOfLongestSubstring(x);
+        assertEquals(3, y);
+
+        x = "pwwkew";
+        y = new Solution().lengthOfLongestSubstring(x);
+        assertEquals(3, y);
+    }
 }

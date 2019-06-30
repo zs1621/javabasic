@@ -1,5 +1,7 @@
 package com.xz.Exercises;
 
+import java.util.LinkedHashSet;
+
 /**
  *
  * @author zs
@@ -7,6 +9,13 @@ package com.xz.Exercises;
  * LeetCode 刷题
  */
 public class Solution {
+
+    /**
+     * https://leetcode-cn.com/problems/add-two-numbers/
+     * @param l1
+     * @param l2
+     * @return
+     */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode l3 = new ListNode(0);
         int indexCury = 0;
@@ -56,5 +65,52 @@ public class Solution {
             size++;
         }
         return l3;
+    }
+
+    /**
+     * https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
+     * @param s string
+     * @return
+     */
+
+    public int lengthOfLongestSubstring(String s) {
+        LinkedHashSet<String> longestSet= new LinkedHashSet();
+
+        LinkedHashSet<String> currentSet= new LinkedHashSet();
+        char[] stringarray = s.toCharArray();
+        int t = stringarray.length;
+        for (int i=0; i < t; i++) {
+            String temp = String.valueOf(stringarray[i]);
+            if (currentSet.contains(temp)) {
+                if (currentSet.size() > longestSet.size()) {
+                    longestSet = (LinkedHashSet<String>) currentSet.clone();
+                }
+                LinkedHashSet<String> tempSet = (LinkedHashSet<String>) currentSet.clone();
+                currentSet.clear();
+                boolean flag = false;
+                int j = 0;
+                for (String tempString : tempSet) {
+                    if (tempString.equals(temp)) {
+                        j ++;
+                    }
+                    if (flag) {
+                        currentSet.add(tempString);
+                    }
+                    if (j > 0) {
+                        flag = true;
+                    }
+                }
+                currentSet.add(temp);
+            } else {
+                currentSet.add(temp);
+            }
+        }
+
+        if (currentSet.size() > longestSet.size()) {
+            return currentSet.size();
+        }
+
+        return longestSet.size();
+
     }
 }
