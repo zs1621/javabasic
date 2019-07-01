@@ -1,6 +1,7 @@
 package com.xz.Exercises;
 
-import java.util.LinkedHashSet;
+import java.util.HashSet;
+import java.util.HashMap;
 
 /**
  *
@@ -67,50 +68,91 @@ public class Solution {
         return l3;
     }
 
+
     /**
      * https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
      * @param s string
-     * @return
+     * @return int
+     *
+     * cpu: 22 ms
+     * memory: 36.8 MB
      */
 
     public int lengthOfLongestSubstring(String s) {
-        LinkedHashSet<String> longestSet= new LinkedHashSet();
-
-        LinkedHashSet<String> currentSet= new LinkedHashSet();
         char[] stringarray = s.toCharArray();
         int t = stringarray.length;
+        int longeStartIndex = 0;
+        int longest = 0;
+        int index_old = 0;
+        HashMap<Character, Integer>  mapChar = new HashMap();
         for (int i=0; i < t; i++) {
-            String temp = String.valueOf(stringarray[i]);
-            if (currentSet.contains(temp)) {
-                if (currentSet.size() > longestSet.size()) {
-                    longestSet = (LinkedHashSet<String>) currentSet.clone();
+            if (mapChar.containsKey(stringarray[i])) {
+                index_old = mapChar.get(stringarray[i]);
+                if (i - longeStartIndex > longest) {
+                    longest =  i - longeStartIndex;
                 }
-                LinkedHashSet<String> tempSet = (LinkedHashSet<String>) currentSet.clone();
-                currentSet.clear();
-                boolean flag = false;
-                int j = 0;
-                for (String tempString : tempSet) {
-                    if (tempString.equals(temp)) {
-                        j ++;
-                    }
-                    if (flag) {
-                        currentSet.add(tempString);
-                    }
-                    if (j > 0) {
-                        flag = true;
-                    }
+                if (index_old + 1 > longeStartIndex) {
+                    longeStartIndex = index_old + 1;
                 }
-                currentSet.add(temp);
-            } else {
-                currentSet.add(temp);
             }
+            mapChar.put(stringarray[i], i);
         }
 
-        if (currentSet.size() > longestSet.size()) {
-            return currentSet.size();
+        if (t - longeStartIndex > longest) {
+            longest = t - longeStartIndex;
         }
 
-        return longestSet.size();
-
+        return longest;
     }
+
+
+    /**
+     *
+     * https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
+     * @param s string
+     * @return int
+     * cpu: 308 ms
+     * memory: 	98.1 MB
+     */
+
+//    public int lengthOfLongestSubstring(String s) {
+//        LinkedHashSet<String> longestSet= new LinkedHashSet();
+//
+//        LinkedHashSet<String> currentSet= new LinkedHashSet();
+//        char[] stringarray = s.toCharArray();
+//        int t = stringarray.length;
+//        for (int i=0; i < t; i++) {
+//            String temp = String.valueOf(stringarray[i]);
+//            if (currentSet.contains(temp)) {
+//                if (currentSet.size() > longestSet.size()) {
+//                    longestSet = (LinkedHashSet<String>) currentSet.clone();
+//                }
+//                LinkedHashSet<String> tempSet = (LinkedHashSet<String>) currentSet.clone();
+//                currentSet.clear();
+//                boolean flag = false;
+//                int j = 0;
+//                for (String tempString : tempSet) {
+//                    if (tempString.equals(temp)) {
+//                        j ++;
+//                    }
+//                    if (flag) {
+//                        currentSet.add(tempString);
+//                    }
+//                    if (j > 0) {
+//                        flag = true;
+//                    }
+//                }
+//                currentSet.add(temp);
+//            } else {
+//                currentSet.add(temp);
+//            }
+//        }
+//
+//        if (currentSet.size() > longestSet.size()) {
+//            return currentSet.size();
+//        }
+//
+//        return longestSet.size();
+//
+//    }
 }

@@ -46,5 +46,21 @@ class SolutionTest {
         x = "pwwkew";
         y = new Solution().lengthOfLongestSubstring(x);
         assertEquals(3, y);
+
+//        String x = "ohomm";
+        x = "mmoho";
+        y = new Solution().lengthOfLongestSubstring(x);
+        assertEquals(3, y);
+
+
+        x = "asjrgapa";
+        y = new Solution().lengthOfLongestSubstring(x);
+        assertEquals(6, y);
+
+        x = "abba";
+        y = new Solution().lengthOfLongestSubstring(x);
+        assertEquals(2, y);
+
+
     }
 }
